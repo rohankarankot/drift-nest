@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/drift-nest/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/drift-nest/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/drift-nest",
+  "projects": {
+    "drift-nest": {
+      "type": "application",
+      "root": "apps/drift-nest",
+      "entryFile": "main",
+      "sourceRoot": "apps/drift-nest/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/drift-nest/tsconfig.app.json"
+      }
+    },
+    "sso": {
+      "type": "application",
+      "root": "apps/sso",
+      "entryFile": "main",
+      "sourceRoot": "apps/sso/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/sso/tsconfig.app.json"
+      }
+    }
   }
 }
